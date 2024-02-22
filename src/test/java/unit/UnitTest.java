@@ -1,47 +1,46 @@
 package unit;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Duration;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.By;
 
-public class UnitTest {
+import org.openqa.selenium.WebElement;
+
+import base.BaseClass;
+
+public class UnitTest extends BaseClass {
 
 	String browserName = "firefox";
 
 	@Test
-	public void test() throws MalformedURLException {
+	public void test() throws InterruptedException {
 
-		DesiredCapabilities caps = new DesiredCapabilities();
-		caps.setPlatform(Platform.ANDROID);
-//		caps.setBrowserName("chrome");
-		if (browserName.equalsIgnoreCase("chrome")) {
-			caps.setBrowserName("chrome");
-			caps.setCapability("chromedriverExecutable", "drivers/chrome.app");
-		} else if (browserName.equalsIgnoreCase("firefox")) {
-			caps.setCapability("appium:appPackage", "org.mozilla.firefox");
-			caps.setCapability("appium:appActivity", ".App");
-		}
-		// URL url = new URL("http://127.0.0.1:4723/wd/hub");
-		URL url = new URL("http://0.0.0.0:4723/wd/hub");
-		WebDriver driver = new RemoteWebDriver(url, caps);
-//		driver.get("https://www.geico.com/");
-		driver.get("https://www.geico.com/");
-		//driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		WebElement geicoLogoElement = getDriver().findElement(By.xpath("//android.view.View[@text=\"\"]"));
 
-//		WebElement amazonLogoElement = driver.findElement(By.id("nav-logo-sprites"));
-//		amazonLogoElement.click();
+		System.out.println(geicoLogoElement.hashCode());
+		System.out.println(geicoLogoElement.isEnabled());
+		 System.out.println(geicoLogoElement.getLocation());
+		geicoLogoElement.click();
 
 //		WebElement hamburgerMenuElement = driver
 //				.findElement(By.id("com.amazon.mShop.android.shopping:id/rs_search_src_text"));
 //		hamburgerMenuElement.click();
 
-	//	driver.close();
+		// under code id working
+//		WebElement goButtonElement = driver.findElement(By.xpath("//android.widget.Button[@text=\"Go\"]"));
+//		goButtonElement.click();
 
+		WebElement zipCodeField = getDriver().findElement(By.xpath("//android.widget.EditText[@resource-id=\"ssp-service-zip\"]"));
+		zipCodeField.click();
+		System.out.println(zipCodeField.isEnabled());
+		System.out.println(zipCodeField.getSize());
+		Thread.sleep(5);
+
+
+		WebElement goButtonElement = getDriver().findElement(By.xpath("//android.widget.Button[@text=\"Go\"]"));
+		System.out.println(goButtonElement.isEnabled());
+		System.out.println(goButtonElement.getText());
+		System.out.println(goButtonElement.getSize());
+		goButtonElement.click();
+		Thread.sleep(5);
 	}
 }
