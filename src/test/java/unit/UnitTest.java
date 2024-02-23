@@ -19,6 +19,7 @@ public class UnitTest extends BaseClass {
 		System.out.println(geicoLogoElement.hashCode());
 		System.out.println(geicoLogoElement.isEnabled());
 		 System.out.println(geicoLogoElement.getLocation());
+		 System.out.println("---------------geicoLogoElement done--------------");
 		geicoLogoElement.click();
 
 //		WebElement hamburgerMenuElement = driver
@@ -30,11 +31,12 @@ public class UnitTest extends BaseClass {
 //		goButtonElement.click();
 
 		WebElement zipCodeField = getDriver().findElement(By.xpath("//android.widget.EditText[@resource-id=\"ssp-service-zip\"]"));
-		zipCodeField.click();
 		System.out.println(zipCodeField.isEnabled());
 		System.out.println(zipCodeField.getSize());
+		zipCodeField.click();
+		zipCodeField.sendKeys("14201");
 		Thread.sleep(5);
-
+		 System.out.println("------------zipCodeField done------------------");
 
 		WebElement goButtonElement = getDriver().findElement(By.xpath("//android.widget.Button[@text=\"Go\"]"));
 		System.out.println(goButtonElement.isEnabled());
@@ -42,5 +44,6 @@ public class UnitTest extends BaseClass {
 		System.out.println(goButtonElement.getSize());
 		goButtonElement.click();
 		Thread.sleep(5);
+		 System.out.println("-------------goButtonElement done-----------------");
 	}
 }

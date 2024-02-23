@@ -7,11 +7,13 @@ import base.BaseClass;
 public class WebViewGeicoTest extends BaseClass {
 
 	@Test
-	public void WVTest() {
+	public void WVTest() throws InterruptedException {
+		//Thread.sleep(5000);
 		iHomePage.clickLogo();
-		iHomePage.clickGoButton();
+		//Thread.sleep(5000);
 		iHomePage.clickZipCodeField();
-
+		//Thread.sleep(5000);
+		iHomePage.clickGoButton();
 	}
 
 }

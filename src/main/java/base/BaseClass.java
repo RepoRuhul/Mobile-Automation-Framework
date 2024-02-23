@@ -41,7 +41,7 @@ public class BaseClass {
 		URL url = new URL("http://0.0.0.0:4723/wd/hub");
 		driver = new RemoteWebDriver(url, caps);
 		initPage();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get("https://www.geico.com/");
 	}
 	public static void initPage() { 
