@@ -21,16 +21,19 @@ public class AndroidHomePage implements IHomePage {
 	@FindBy(xpath = "//android.widget.Button[@text=\"Go\"]")
 	WebElement goButtonElement;
 
-	@FindBy(id = "ssp-service-zip")
+	@FindBy(xpath = "//android.widget.EditText[@resource-id=\"ssp-service-zip\"]")
 	WebElement zipCodeField;
 
 	@Override
 	public void clickLogo() {
 		try {
 			Thread.sleep(4);
+			System.out.println(geicoLogoElement.hashCode());
+			System.out.println(geicoLogoElement.isEnabled());
+			 System.out.println(geicoLogoElement.getLocation());
 			click(geicoLogoElement);
 		} catch (NoSuchElementException | InterruptedException e) {
-
+			Assertions.fail(e);
 		}
 
 	}
@@ -38,17 +41,23 @@ public class AndroidHomePage implements IHomePage {
 	@Override
 		public void clickZipCodeField() {
 			try {
-				click(zipCodeField);
+				System.out.println(zipCodeField.isEnabled());
+				System.out.println(zipCodeField.getSize());
+				//click(zipCodeField);
+				input(zipCodeField, "11144");
 			} catch (NoSuchElementException e) {
-				Assertions.fail();
+				Assertions.fail(e);
 			}
 	}
 	@Override
 	public void clickGoButton() {
 		try {
+			System.out.println(goButtonElement.isEnabled());
+			System.out.println(goButtonElement.getText());
+			System.out.println(goButtonElement.getSize());
 			click(goButtonElement);
 		} catch (NoSuchElementException e) {
-			Assertions.fail();
+			Assertions.fail(e);
 		}
 	}
 
